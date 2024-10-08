@@ -1,0 +1,21 @@
+{
+  "name": "cloud-cf-newApp",
+  "version": "1.0.0",
+  "description": "Product list demo app for Cloudfoundry",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "John Doe",
+  "license": "ISC",
+  "dependencies": {
+    "@sap/xsenv": "^3.1.0",
+    "@sap/xssec": "^3.0.10",
+    "cloud-cf-newApp": "file:",
+    "express": "^4.17.1",
+    "passport": "^0.4.1"
+  },
+  "devDependencies": {
+    "request": "^2.88.0"
+  }
+}

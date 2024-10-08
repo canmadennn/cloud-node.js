@@ -1,0 +1,16 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m"
+        controllerName="myapp.controller.App">
+    <App>
+        <Page title="My UI5 ssApp">
+            <content>
+                <GenericTile
+                        class="sapUiTinyMargin"
+                        press=".pressApiTest"
+                        header="Api Server Test"
+                />
+            </content>
+        </Page>
+    </App>
+</mvc:View>
