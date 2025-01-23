@@ -28,24 +28,7 @@ sap.ui.define([
 
 
 
-        getFetchData: function (url, methodName) {
-            var that = this;
-            jQuery.ajax({
-                url: url,
-                method: "GET",
-                success: function (data) {
-                    // Dynamically call the method specified by methodName
-                    if (that[methodName]) {
-                        that[methodName](data);
-                    } else {
-                        console.error("Method " + methodName + " does not exist.");
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.error("Error fetching data from server:", textStatus, errorThrown);
-                }
-            });
-        }
+
 
     });
 });

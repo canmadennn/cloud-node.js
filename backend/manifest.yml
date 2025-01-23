@@ -1,31 +1,13 @@
+---
 applications:
-# Application
-- name: newApp
-  instances: 1
-  memory: 128M
-  routes:
-    - route: newApp.cfapps.us10-001.hana.ondemand.com
-  path: myapp
-  buildpacks:
-    - nodejs_buildpack  
-  timeout: 180
-  services:
-    - xsuaa-service
-
-# Application Router
-- name: approuter
-  routes:
-    - route: approuter-newApp.cfapps.us10-001.hana.ondemand.com
-  path: approuter
-  buildpacks:
-    - nodejs_buildpack
-  memory: 128M
-  services:
-    - xsuaa-service
-  env:
-    destinations: >
-      [
-        {"name":"app-destination",
-         "url":"https://newApp.cfapps.us10-001.hana.ondemand.com",
-         "forwardAuthToken": true}
-      ]
+  - name: backend
+    memory: 256M
+    instances: 1
+    buildpack: nodejs_buildpack
+    command: npm start
+    services:
+      - connServices
+      - translationSerives
+      - xsuaa-service
+      - HANA
+      - destinationServices

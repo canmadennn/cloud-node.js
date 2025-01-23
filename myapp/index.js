@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const port = process.env.port || 8080;
 // secure the direct call to the application
-
+const { fetchData } = require('./db');
+const cds = require('@sap/cds');
 
 const passport = require('passport');
 const { JWTStrategy } = require('@sap/xssec');
@@ -34,8 +35,25 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-	res.send({ message: 'Hello, World!' });
+
+
+	fetchData('SELECT * FROM DUMMY')
+		.then(rows => {
+			console.log('Sorgu sonuçları:', rows);
+			res.send({ message: rows });
+		})
+		.catch(err => {
+			console.error(err);
+			res.send({ message: err });
+		});
+	//res.send({ message: 'Hello, World!' });
 });
+
+
+
+
+
+
 
 // Statik dosyaları sunma
 app.use(express.static(path.join(__dirname, 'webapp')));
